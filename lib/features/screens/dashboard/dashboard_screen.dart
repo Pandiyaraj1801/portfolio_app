@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/constant/images/app_images.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
+import 'package:portfolio/features/widgets/educations.dart';
 import 'package:portfolio/features/widgets/skill_carousel_card.dart';
 import 'package:portfolio/features/widgets/work_experience.dart';
 import 'package:shimmer/shimmer.dart';
@@ -85,7 +86,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           /// Show Experience Tech Container Section
           Center(
             child: Text(
-              "Experience",
+              "Work Experience",
               style: theme.textTheme.displayMedium?.copyWith(
                 fontSize: widthSz * 0.025,
                 letterSpacing: 2,
@@ -98,6 +99,24 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
           /// Work Experiences Section
           WorkExperience(),
+
+          SizedBox(height: heightSz * 0.06),
+
+          /// Educations
+          Center(
+            child: Text(
+              "Educations",
+              style: theme.textTheme.displayMedium?.copyWith(
+                fontSize: widthSz * 0.025,
+                letterSpacing: 2,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          SizedBox(height: heightSz * 0.04),
+
+          EducationBox(),
 
           SizedBox(height: 100),
         ],

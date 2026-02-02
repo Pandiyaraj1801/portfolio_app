@@ -1,5 +1,5 @@
 import 'package:portfolio/core/constant/images/images.dart';
-import 'package:portfolio/core/constant/urls/urls.dart';
+import 'package:portfolio/core/constant/url_configs/urls.dart';
 
 class AppImage {
   static final String developerLogo = ImagePath.developerLogoImg;
@@ -82,6 +82,12 @@ class AppImage {
       'subtitle': 'Database management & query tooling',
       'image': ImagePath.dbeaverImg,
       'url': AppUrls.dbeaverDocsUrl,
+    },
+    {
+      'title': 'Vuetify',
+      'subtitle': 'Material Design UI framework for Vue.js',
+      'image': ImagePath.vuetifyImg,
+      'url': AppUrls.vuetifyDocsUrl,
     },
   ];
 }

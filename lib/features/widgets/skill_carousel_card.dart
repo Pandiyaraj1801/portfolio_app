@@ -1,7 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/constant/images/app_images.dart';
+import 'package:portfolio/core/methods/app_methods/methods.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class InfiniteCarousel extends StatefulWidget {
   const InfiniteCarousel({super.key});
@@ -26,10 +28,16 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
 
   @override
   Widget build(BuildContext context) {
+    double widthSz = MediaQuery.of(context).size.width;
+    double heightSz = MediaQuery.of(context).size.height;
+    ThemeData theme = Theme.of(context);
+
     return Center(
       child: SizedBox(
-        height: 300,
-        width: 600,
+        // height: 300,
+        // width: 600,
+        height: heightSz * 0.45,
+        width: widthSz * 0.35,
         child: PageView.builder(
           controller: _controller,
           physics: BouncingScrollPhysics(),
@@ -70,7 +78,7 @@ class SkillCard extends StatelessWidget {
 
     return InkWell(
       overlayColor: WidgetStatePropertyAll(AppColors.transparentColor),
-      onTap: () => openUrl(skillCard["url"]),
+      onTap: () => AppMethods.openUrl(skillCard["url"]),
       child: SizedBox(
         width: 170,
         child: Stack(
@@ -129,18 +137,14 @@ class SkillCard extends StatelessWidget {
 
             // IMAGE FLOATING ABOVE
             Positioned(
-              top: -70,
+              top: -50,
               left: 0,
               right: 0,
               child: SizedBox(
-                height: 130,
+                height: 100,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    skillCard["image"],
-                    height: 120,
-                    width: double.infinity,
-                  ),
+                  child: Image.asset(skillCard["image"]),
                 ),
               ),
             ),
@@ -148,14 +152,5 @@ class SkillCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> openUrl(url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
-      print('Could not launch $uri');
-    }
   }
 }

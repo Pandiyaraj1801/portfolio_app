@@ -17,6 +17,7 @@ class ImagePath {
   static const String mysqlImg = "assets/images/mysql.png";
   static const String mariadbImg = "assets/images/mariadb.png";
   static const String dbeaverImg = "assets/images/dbeaver.png";
+  static const String vuetifyImg = "assets/images/vuetify.png";
   static const String flattrade = "assets/images/flattrade.png";
   static const String flattradeBanner = "assets/images/flattrade_banner.png";
 }

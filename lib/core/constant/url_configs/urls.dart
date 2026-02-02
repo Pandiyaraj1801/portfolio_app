@@ -16,4 +16,5 @@ class AppUrls {
   static String mysqlDocsUrl = "https://www.mysql.com";
   static String mariadbDocsUrl = "https://mariadb.org";
   static String dbeaverDocsUrl = "https://dbeaver.io";
+  static String vuetifyDocsUrl = "https://v2.vuetifyjs.com";
 }

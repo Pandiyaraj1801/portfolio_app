@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/constant/images/app_images.dart';
-import 'package:portfolio/core/constant/urls/urls.dart';
+import 'package:portfolio/core/constant/url_configs/urls.dart';
+import 'package:portfolio/core/methods/app_methods/methods.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class WorkExperience extends StatefulWidget {
   const WorkExperience({super.key});
@@ -152,17 +152,7 @@ class _WorkExperienceState extends State<WorkExperience> {
                       overlayColor: WidgetStatePropertyAll(
                         AppColors.transparentColor,
                       ),
-                      onTap: () async {
-                        final uri = Uri.parse(AppUrls.flattradeUrl);
-                        if (await canLaunchUrl(uri)) {
-                          await launchUrl(
-                            uri,
-                            mode: LaunchMode.externalApplication,
-                          );
-                        } else {
-                          print('Could not launch $uri');
-                        }
-                      },
+                      onTap: () => AppMethods.openUrl(AppUrls.flattradeUrl),
                       child: Text(
                         "see more...",
                         style: theme.textTheme.displayMedium?.copyWith(
