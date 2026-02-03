@@ -1,6 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/constant/education_projects/educations.dart';
 import 'package:portfolio/core/constant/images/app_images.dart';
+import 'package:portfolio/core/constant/images/images.dart';
+import 'package:portfolio/core/utils/app_responsive/app_responsive.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
 import 'package:portfolio/features/widgets/educations.dart';
 import 'package:portfolio/features/widgets/skill_carousel_card.dart';
@@ -17,6 +22,13 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   bool start = false;
   bool showRole = false;
+  final List<DashboardItem> dashboards = [
+    DashboardItem(title: "Home", icon: Icons.home),
+    DashboardItem(title: "About", icon: Icons.person),
+    DashboardItem(title: "Skills", icon: Icons.build),
+    DashboardItem(title: "Experience", icon: Icons.work),
+    DashboardItem(title: "Education", icon: Icons.school),
+  ];
 
   @override
   void initState() {
@@ -38,15 +50,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double widthSz = MediaQuery.of(context).size.width;
-    double heightSz = MediaQuery.of(context).size.height;
     ThemeData theme = Theme.of(context);
 
     return Scaffold(
       // backgroundColor: AppColors.lightScaffoldColor,
       appBar: AppBar(
-        toolbarHeight: heightSz * 0.17,
-        leadingWidth: widthSz * 0.1,
+        toolbarHeight: AppResponsive.space(70),
+        leadingWidth: AppResponsive.space(100),
         surfaceTintColor: theme.appBarTheme.backgroundColor,
         leading: Image.asset(AppImage.developerLogo, fit: BoxFit.cover),
         shape: Border(
@@ -55,30 +65,143 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             width: 1,
           ),
         ),
+        actions: AppResponsive.width > 700
+            ? dashboards.map((e) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppResponsive.w(0.01),
+                  ),
+                  child: Text(
+                    e.title,
+                    style: theme.textTheme.displayMedium?.copyWith(
+                      letterSpacing: 2,
+                      fontSize: AppResponsive.font(10),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                );
+              }).toList()
+            : null,
       ),
+
+      endDrawer: AppResponsive.width < 700
+          ? Drawer(
+              width: AppResponsive.w(0.6),
+              child: ListView(
+                children: [
+                  Stack(
+                    clipBehavior: Clip.none, // 🔥 IMPORTANT
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.drawerProfileBgColor,
+                          border: const Border(
+                            bottom: BorderSide(color: Colors.white70),
+                          ),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: AppResponsive.w(0.05),
+                          horizontal: AppResponsive.w(0.015),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CircleAvatar(
+                              radius: 40,
+                              backgroundColor: AppColors.darkScaffoldColor,
+                              backgroundImage: AssetImage(
+                                ImagePath.profliepicImg,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              PersonalDetails.username,
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                fontSize: AppResponsive.font(17),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              PersonalDetails.emailAccount,
+                              style: theme.textTheme.displayMedium?.copyWith(
+                                color: AppColors.greyColor,
+                                letterSpacing: 1,
+                                fontSize: AppResponsive.font(12),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // ✅ FULL icon overlaying border line
+                      Positioned(
+                        bottom: -10,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.amber,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.star,
+                            size: AppResponsive.icon(14),
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: AppResponsive.space(10)),
+
+                  ...dashboards.map((e) {
+                    return ListTile(
+                      minVerticalPadding: AppResponsive.space(10),
+                      minLeadingWidth: 0,
+                      minTileHeight: 0,
+                      horizontalTitleGap: AppResponsive.space(10),
+                      leading: Icon(e.icon, size: AppResponsive.font(15)),
+                      title: Text(
+                        e.title,
+                        style: theme.textTheme.displayMedium?.copyWith(
+                          color: AppColors.greyColor,
+                          letterSpacing: 1,
+                          fontSize: AppResponsive.font(12),
+                        ),
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            )
+          : null,
 
       body: ListView(
         children: [
           /// Banner Image with name and role section
-          _bannerImage(heightSz, widthSz, theme),
+          _bannerImage(theme),
 
           /// Introduction overview section
-          _introAboutMe(heightSz, widthSz, theme),
+          _introAboutMe(theme),
 
-          SizedBox(height: heightSz * 0.1),
+          SizedBox(height: AppResponsive.space(60)),
 
-          /// Show Skills Tech Container Section
+          // /// Show Skills Tech Container Section
           Center(
             child: Text(
               "Skills",
               style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: widthSz * 0.025,
+                fontSize: AppResponsive.font(17),
                 letterSpacing: 2,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(height: heightSz * 0.03),
+
+          SizedBox(height: AppResponsive.space(10)),
 
           /// Skill Card Carousel
           InfiniteCarousel(),
@@ -88,35 +211,49 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             child: Text(
               "Work Experience",
               style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: widthSz * 0.025,
+                fontSize: AppResponsive.font(17),
                 letterSpacing: 2,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
 
-          SizedBox(height: heightSz * 0.03),
+          SizedBox(height: AppResponsive.space(20)),
 
           /// Work Experiences Section
           WorkExperience(),
 
-          SizedBox(height: heightSz * 0.06),
+          SizedBox(height: AppResponsive.space(30)),
 
           /// Educations
           Center(
             child: Text(
               "Educations",
               style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: widthSz * 0.025,
+                fontSize: AppResponsive.font(17),
                 letterSpacing: 2,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
 
-          SizedBox(height: heightSz * 0.04),
+          SizedBox(height: AppResponsive.space(20)),
 
           EducationBox(),
+
+          SizedBox(height: AppResponsive.space(30)),
+
+          /// Educations
+          Center(
+            child: Text(
+              "Projects",
+              style: theme.textTheme.displayMedium?.copyWith(
+                fontSize: AppResponsive.font(17),
+                letterSpacing: 2,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
 
           SizedBox(height: 100),
         ],
@@ -124,12 +261,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     );
   }
 
-  Widget _bannerImage(double heightSz, double widthSz, ThemeData theme) {
+  Widget _bannerImage(ThemeData theme) {
     return Container(
-      height: heightSz * 0.7,
+      height: AppResponsive.h(0.7),
       padding: EdgeInsets.symmetric(
-        horizontal: widthSz * 0.05,
-        vertical: heightSz * 0.02,
+        horizontal: AppResponsive.w(0.04),
+        vertical: AppResponsive.h(0.02),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,7 +287,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ScrambleAnimatedText(
                       "J Pandiyaraj",
                       textStyle: theme.textTheme.bodyLarge?.copyWith(
-                        fontSize: widthSz * 0.06,
+                        fontSize: AppResponsive.font(35),
+                        letterSpacing: 1.5,
                       ),
                       speed: const Duration(milliseconds: 200),
                     ),
@@ -166,10 +304,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         theme.textTheme.bodyLarge?.color ?? AppColors.greyColor,
                     highlightColor: AppColors.animateTxtColor,
                     child: Text(
-                      "Full Stack Developer",
+                      "Full Stack Developer.",
                       style: theme.textTheme.displayMedium?.copyWith(
-                        fontSize: widthSz * 0.02,
+                        fontSize: AppResponsive.font(14),
                         color: AppColors.greyColor,
+                        letterSpacing: 1.5,
                       ),
                     ),
                   ),
@@ -181,7 +320,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           Expanded(
             child: AnimatedSlide(
               duration: Duration(seconds: 1),
-              offset: !start ? Offset(1.5, 0) : Offset(0, 0),
+              offset: !start ? Offset(1, 0) : Offset(0, 0),
               curve: Curves.easeOut,
               child: Image.asset(AppImage.dashboardImg, fit: BoxFit.contain),
             ),
@@ -191,15 +330,15 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     );
   }
 
-  Widget _introAboutMe(double heightSz, double widthSz, ThemeData theme) {
+  Widget _introAboutMe(ThemeData theme) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return AnimatedSlide(
       duration: Duration(seconds: 1),
-      offset: start ? Offset(0, 0) : Offset(-1.5, 0),
+      offset: start ? Offset(0, 0) : Offset(-1, 0),
       curve: Curves.easeOut,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: widthSz * 0.07),
+        padding: EdgeInsets.symmetric(horizontal: AppResponsive.space(40)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -207,24 +346,25 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             Text(
               "Introduction",
               style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: widthSz * 0.01,
+                fontSize: AppResponsive.font(9),
+                letterSpacing: 1.5,
               ),
             ),
-            SizedBox(height: heightSz * 0.01),
+            SizedBox(height: AppResponsive.h(0.01)),
             Text(
               "Overview.",
               style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: widthSz * 0.025,
+                fontSize: AppResponsive.font(20),
                 color: AppColors.greyColor,
               ),
             ),
-            SizedBox(height: heightSz * 0.02),
+            SizedBox(height: AppResponsive.h(0.02)),
             SizedBox(
-              width: widthSz * 0.5,
+              width: AppResponsive.w(0.5),
               child: Text(
                 ''' Flutter Developer with 2.4 years of experience building high-performance, real-time mobile applications. Strong expertise in REST API and WebSocket integration for seamless data communication. Proficient in state management using Provider and BLoC for scalable and maintainable apps. Hands-on experience developing trading, visitor tracking, and approval workflow applications. Skilled in backend integration using Go and MariaDB to deliver end-to-end solutions. Passionate about writing clean code, optimizing performance, and delivering reliable user experiences. ''',
                 style: theme.textTheme.displayMedium?.copyWith(
-                  fontSize: widthSz * 0.011,
+                  fontSize: AppResponsive.font(8),
                   color: isDark ? AppColors.greyColor : AppColors.blackColor,
                   letterSpacing: 1,
                   height: 1.5,

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/constant/images/app_images.dart';
 import 'package:portfolio/core/methods/app_methods/methods.dart';
+import 'package:portfolio/core/utils/app_responsive/app_responsive.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
 
 class InfiniteCarousel extends StatefulWidget {
@@ -28,16 +29,10 @@ class _InfiniteCarouselState extends State<InfiniteCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    double widthSz = MediaQuery.of(context).size.width;
-    double heightSz = MediaQuery.of(context).size.height;
-    ThemeData theme = Theme.of(context);
-
     return Center(
       child: SizedBox(
-        // height: 300,
-        // width: 600,
-        height: heightSz * 0.45,
-        width: widthSz * 0.35,
+        height: AppResponsive.h(0.45),
+        width: AppResponsive.space(330),
         child: PageView.builder(
           controller: _controller,
           physics: BouncingScrollPhysics(),
@@ -74,23 +69,24 @@ class SkillCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return InkWell(
       overlayColor: WidgetStatePropertyAll(AppColors.transparentColor),
       onTap: () => AppMethods.openUrl(skillCard["url"]),
       child: SizedBox(
-        width: 170,
+        width: AppResponsive.space(150),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             // CARD BELOW
             Container(
-              height: 170,
+              height: AppResponsive.space(110),
               width: double.infinity,
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(AppResponsive.space(7)),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
+                color: theme.colorScheme.surface,
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(
                   color: AppColors.boxBorderColor.withOpacity(0.3),
@@ -110,21 +106,27 @@ class SkillCard extends StatelessWidget {
                   Expanded(child: SizedBox()),
                   Text(
                     skillCard["title"],
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyLarge?.copyWith(letterSpacing: 1),
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      letterSpacing: 1,
+                      fontSize: AppResponsive.font(10),
+                    ),
                   ),
                   SizedBox(height: 4),
-                  Text(
-                    skillCard["subtitle"],
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Expanded(
+                    child: Text(
+                      skillCard["subtitle"],
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontSize: AppResponsive.font(5.5),
+                      ),
+                    ),
                   ),
-                  Expanded(child: SizedBox()),
+                  // Expanded(child: SizedBox()),
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       "View More",
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontSize: AppResponsive.font(6),
                         color: isDark
                             ? AppColors.greyColor.withOpacity(0.5)
                             : AppColors.blackColor,
@@ -137,11 +139,11 @@ class SkillCard extends StatelessWidget {
 
             // IMAGE FLOATING ABOVE
             Positioned(
-              top: -50,
+              top: AppResponsive.space(-40),
               left: 0,
               right: 0,
               child: SizedBox(
-                height: 100,
+                height: AppResponsive.space(70),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.asset(skillCard["image"]),

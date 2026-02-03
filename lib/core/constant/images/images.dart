@@ -20,4 +20,5 @@ class ImagePath {
   static const String vuetifyImg = "assets/images/vuetify.png";
   static const String flattrade = "assets/images/flattrade.png";
   static const String flattradeBanner = "assets/images/flattrade_banner.png";
+  static const String profliepicImg = "assets/images/profliepic.jpg";
 }

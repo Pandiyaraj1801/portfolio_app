@@ -14,4 +14,6 @@ class AppColors {
   static Color animateTxtColor = const Color(0xFF607D8B);
   static Color boxShadowColor = const Color(0xE8000000);
   static Color boxBorderColor = const Color(0xFF9E9E9E);
+  static Color drawerBgColor = const Color(0xff11112C);
+  static Color drawerProfileBgColor = const Color(0xff1E2048);
 }

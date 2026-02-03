@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class EducationsApp {
+class PersonalDetails {
+  static const username = "Pandiyaraj J";
+  static const emailAccount = "pandiyaraj1801@gmail.com";
+
   static const List<Map<String, dynamic>> educations = [
     {
       "icon": Icons.code,
@@ -29,4 +32,11 @@ class EducationsApp {
           "Completed Higher Secondary Education with specialization in Accountancy and Business Mathematics, covering financial accounting principles, business calculations, and analytical problem-solving.",
     },
   ];
+}
+
+class DashboardItem {
+  final String title;
+  final IconData icon;
+
+  DashboardItem({required this.title, required this.icon});
 }
