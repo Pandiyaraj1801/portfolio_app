@@ -37,6 +37,7 @@ class PersonalDetails {
 class DashboardItem {
   final String title;
   final IconData icon;
+  final GlobalKey key;
 
-  DashboardItem({required this.title, required this.icon});
+  DashboardItem({required this.title, required this.icon, required this.key});
 }

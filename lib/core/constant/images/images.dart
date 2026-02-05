@@ -21,4 +21,5 @@ class ImagePath {
   static const String flattrade = "assets/images/flattrade.png";
   static const String flattradeBanner = "assets/images/flattrade_banner.png";
   static const String profliepicImg = "assets/images/profliepic.jpg";
+  static const String projectsImg = "assets/images/projects_img.png";
 }

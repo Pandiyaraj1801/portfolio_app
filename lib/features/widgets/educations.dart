@@ -17,7 +17,7 @@ class EducationBox extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: PersonalDetails.educations.map((edu) {
         return Container(
-          height: AppResponsive.space(175),
+          height: AppResponsive.space(180),
           width: AppResponsive.space(170),
           padding: EdgeInsets.all(AppResponsive.space(7)),
           margin: EdgeInsets.symmetric(horizontal: AppResponsive.space(12)),

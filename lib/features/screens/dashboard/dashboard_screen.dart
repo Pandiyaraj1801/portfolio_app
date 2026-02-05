@@ -7,7 +7,10 @@ import 'package:portfolio/core/constant/images/app_images.dart';
 import 'package:portfolio/core/constant/images/images.dart';
 import 'package:portfolio/core/utils/app_responsive/app_responsive.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
+import 'package:portfolio/core/widgets/header_txt.dart';
+import 'package:portfolio/features/screens/mobile_view/mobile_view.dart';
 import 'package:portfolio/features/widgets/educations.dart';
+import 'package:portfolio/features/widgets/projects.dart';
 import 'package:portfolio/features/widgets/skill_carousel_card.dart';
 import 'package:portfolio/features/widgets/work_experience.dart';
 import 'package:shimmer/shimmer.dart';
@@ -22,18 +25,21 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   bool start = false;
   bool showRole = false;
+  String selectedTxt = "";
+  final ScrollController _scrollController = ScrollController();
   final List<DashboardItem> dashboards = [
-    DashboardItem(title: "Home", icon: Icons.home),
-    DashboardItem(title: "About", icon: Icons.person),
-    DashboardItem(title: "Skills", icon: Icons.build),
-    DashboardItem(title: "Experience", icon: Icons.work),
-    DashboardItem(title: "Education", icon: Icons.school),
+    DashboardItem(title: "About", icon: Icons.person, key: GlobalKey()),
+    DashboardItem(title: "Skills", icon: Icons.build, key: GlobalKey()),
+    DashboardItem(title: "Experience", icon: Icons.work, key: GlobalKey()),
+    DashboardItem(title: "Education", icon: Icons.school, key: GlobalKey()),
+    DashboardItem(title: "Projects", icon: Icons.cloud, key: GlobalKey()),
   ];
 
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(milliseconds: 500), () {
+      if (!mounted) return;
       start = !start;
       setState(() {});
     });
@@ -45,6 +51,29 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
     setState(() {
       showRole = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void scrollToSection(GlobalKey key) {
+    if (!mounted) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+
+      final context = key.currentContext;
+      if (context == null) return;
+
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOut,
+      );
     });
   }
 
@@ -71,12 +100,25 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   padding: EdgeInsets.symmetric(
                     horizontal: AppResponsive.w(0.01),
                   ),
-                  child: Text(
-                    e.title,
-                    style: theme.textTheme.displayMedium?.copyWith(
-                      letterSpacing: 2,
-                      fontSize: AppResponsive.font(10),
-                      fontWeight: FontWeight.bold,
+                  child: TextButton(
+                    style: ButtonStyle(
+                      overlayColor: WidgetStatePropertyAll(
+                        AppColors.transparentColor,
+                      ),
+                    ),
+                    onPressed: () {
+                      scrollToSection(e.key);
+                      selectedTxt = e.title;
+                      setState(() {});
+                    },
+                    child: Text(
+                      e.title,
+                      style: theme.textTheme.displayMedium?.copyWith(
+                        letterSpacing: 2,
+                        fontSize: AppResponsive.font(10),
+                        fontWeight: FontWeight.bold,
+                        color: selectedTxt == e.title ? Colors.amber : null,
+                      ),
                     ),
                   ),
                 );
@@ -164,6 +206,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       minTileHeight: 0,
                       horizontalTitleGap: AppResponsive.space(10),
                       leading: Icon(e.icon, size: AppResponsive.font(15)),
+                      onTap: () {
+                        selectedTxt = e.title;
+                        setState(() {});
+                        scrollToSection(e.key);
+                        Navigator.of(context).maybePop();
+                      },
                       title: Text(
                         e.title,
                         style: theme.textTheme.displayMedium?.copyWith(
@@ -179,85 +227,99 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             )
           : null,
 
-      body: ListView(
-        children: [
-          /// Banner Image with name and role section
-          _bannerImage(theme),
+      body: AppResponsive.width < 700
+          ? MoblieViewApp(
+              scrollController: _scrollController,
+              selectedTxt: selectedTxt,
+            )
+          : SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Introduction and navbar sections
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    key: dashboards[0].key,
+                    children: [
+                      /// Banner Image with name and role section
+                      _bannerImage(theme),
 
-          /// Introduction overview section
-          _introAboutMe(theme),
+                      /// Introduction overview section
+                      _introAboutMe(theme),
+                    ],
+                  ),
 
-          SizedBox(height: AppResponsive.space(60)),
+                  SizedBox(height: AppResponsive.space(60)),
 
-          // /// Show Skills Tech Container Section
-          Center(
-            child: Text(
-              "Skills",
-              style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: AppResponsive.font(17),
-                letterSpacing: 2,
-                fontWeight: FontWeight.bold,
+                  /// Show Skills Tech Container Section
+                  Column(
+                    key: dashboards[1].key,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TxtHeader(txt: "Skills", fontSize: 17),
+
+                      SizedBox(height: AppResponsive.space(10)),
+
+                      /// Skill Card Carousel
+                      InfiniteCarousel(),
+                    ],
+                  ),
+
+                  /// Show Experience Tech Container Section
+                  Column(
+                    key: dashboards[2].key,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TxtHeader(txt: "Work Experience", fontSize: 17),
+
+                      SizedBox(height: AppResponsive.space(20)),
+
+                      /// Work Experiences Section
+                      WorkExperience(),
+                    ],
+                  ),
+
+                  SizedBox(height: AppResponsive.space(30)),
+
+                  /// Educations
+                  Column(
+                    key: dashboards[3].key,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TxtHeader(txt: "Educations", fontSize: 17),
+
+                      SizedBox(height: AppResponsive.space(20)),
+
+                      EducationBox(),
+                    ],
+                  ),
+
+                  SizedBox(height: AppResponsive.space(30)),
+
+                  Column(
+                    key: dashboards[4].key,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /// Projects
+                      TxtHeader(txt: "Projects", fontSize: 17),
+
+                      SizedBox(height: AppResponsive.space(20)),
+
+                      Center(child: ProjectsView()),
+
+                      SizedBox(height: 100),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ),
-
-          SizedBox(height: AppResponsive.space(10)),
-
-          /// Skill Card Carousel
-          InfiniteCarousel(),
-
-          /// Show Experience Tech Container Section
-          Center(
-            child: Text(
-              "Work Experience",
-              style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: AppResponsive.font(17),
-                letterSpacing: 2,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-
-          SizedBox(height: AppResponsive.space(20)),
-
-          /// Work Experiences Section
-          WorkExperience(),
-
-          SizedBox(height: AppResponsive.space(30)),
-
-          /// Educations
-          Center(
-            child: Text(
-              "Educations",
-              style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: AppResponsive.font(17),
-                letterSpacing: 2,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-
-          SizedBox(height: AppResponsive.space(20)),
-
-          EducationBox(),
-
-          SizedBox(height: AppResponsive.space(30)),
-
-          /// Educations
-          Center(
-            child: Text(
-              "Projects",
-              style: theme.textTheme.displayMedium?.copyWith(
-                fontSize: AppResponsive.font(17),
-                letterSpacing: 2,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-
-          SizedBox(height: 100),
-        ],
-      ),
     );
   }
 
@@ -279,9 +341,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               children: [
                 AnimatedTextKit(
                   key: ValueKey(Theme.of(context).brightness),
-                  onFinished: () => setState(() {
-                    showRole = true;
-                  }),
+                  onFinished: () {
+                    if (!mounted) return;
+                    setState(() {
+                      showRole = true;
+                    });
+                  },
                   isRepeatingAnimation: false,
                   animatedTexts: [
                     ScrambleAnimatedText(

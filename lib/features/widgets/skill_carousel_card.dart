@@ -120,7 +120,7 @@ class SkillCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Expanded(child: SizedBox()),
+
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -139,15 +139,12 @@ class SkillCard extends StatelessWidget {
 
             // IMAGE FLOATING ABOVE
             Positioned(
-              top: AppResponsive.space(-40),
+              top: AppResponsive.space(-30),
               left: 0,
               right: 0,
               child: SizedBox(
                 height: AppResponsive.space(70),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(skillCard["image"]),
-                ),
+                child: Image.asset(skillCard["image"], fit: BoxFit.contain),
               ),
             ),
           ],
