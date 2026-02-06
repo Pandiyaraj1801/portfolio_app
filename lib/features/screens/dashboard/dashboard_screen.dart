@@ -10,6 +10,7 @@ import 'package:portfolio/core/utils/themes/app_color.dart';
 import 'package:portfolio/core/widgets/header_txt.dart';
 import 'package:portfolio/features/screens/mobile_view/mobile_view.dart';
 import 'package:portfolio/features/widgets/educations.dart';
+import 'package:portfolio/features/widgets/info_details.dart';
 import 'package:portfolio/features/widgets/projects.dart';
 import 'package:portfolio/features/widgets/skill_carousel_card.dart';
 import 'package:portfolio/features/widgets/work_experience.dart';
@@ -33,6 +34,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     DashboardItem(title: "Experience", icon: Icons.work, key: GlobalKey()),
     DashboardItem(title: "Education", icon: Icons.school, key: GlobalKey()),
     DashboardItem(title: "Projects", icon: Icons.cloud, key: GlobalKey()),
+    DashboardItem(title: null, icon: null, key: GlobalKey()),
   ];
 
   @override
@@ -108,11 +110,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ),
                     onPressed: () {
                       scrollToSection(e.key);
-                      selectedTxt = e.title;
+                      selectedTxt = e.title ?? "";
                       setState(() {});
                     },
                     child: Text(
-                      e.title,
+                      e.title ?? "",
                       style: theme.textTheme.displayMedium?.copyWith(
                         letterSpacing: 2,
                         fontSize: AppResponsive.font(10),
@@ -207,13 +209,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       horizontalTitleGap: AppResponsive.space(10),
                       leading: Icon(e.icon, size: AppResponsive.font(15)),
                       onTap: () {
-                        selectedTxt = e.title;
+                        selectedTxt = e.title ?? "";
                         setState(() {});
                         scrollToSection(e.key);
                         Navigator.of(context).maybePop();
                       },
                       title: Text(
-                        e.title,
+                        e.title ?? "",
                         style: theme.textTheme.displayMedium?.copyWith(
                           color: AppColors.greyColor,
                           letterSpacing: 1,
@@ -302,21 +304,59 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
                   SizedBox(height: AppResponsive.space(30)),
 
+                  /// Projects
                   Column(
                     key: dashboards[4].key,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /// Projects
                       TxtHeader(txt: "Projects", fontSize: 17),
 
                       SizedBox(height: AppResponsive.space(20)),
 
                       Center(child: ProjectsView()),
-
-                      SizedBox(height: 100),
                     ],
                   ),
+
+                  SizedBox(height: AppResponsive.space(50)),
+
+                  /// InfoDetails
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppResponsive.space(50),
+                    ),
+                    child: Column(
+                      key: dashboards[5].key,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Divider(),
+
+                        SizedBox(height: AppResponsive.space(10)),
+
+                        InfoDetails(),
+
+                        SizedBox(height: AppResponsive.space(15)),
+
+                        Center(
+                          child: Text(
+                            "© 2026 Pandiyaraj. Crafted with passion and attention to detail.",
+                            style: theme.textTheme.displayMedium?.copyWith(
+                              color: AppColors.greyColor,
+                              letterSpacing: 1,
+                              fontSize: AppResponsive.font(6),
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(height: AppResponsive.space(10)),
+
+                        Divider(),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: AppResponsive.space(50)),
                 ],
               ),
             ),

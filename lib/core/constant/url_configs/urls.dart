@@ -17,4 +17,8 @@ class AppUrls {
   static String mariadbDocsUrl = "https://mariadb.org";
   static String dbeaverDocsUrl = "https://dbeaver.io";
   static String vuetifyDocsUrl = "https://v2.vuetifyjs.com";
+
+  static String linkedinUrl = "https://linkedin.com/in/pandiya-raj-5b8532245";
+  static String githubUrl = "https://github.com/Pandiyaraj1801";
+  static String emailUrl = "mailto:pandiyaraj1801@gmail.com";
 }
