@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/features/widgets/mobile_view/about_app.dart';
 import 'package:portfolio/features/widgets/mobile_view/education_app.dart';
 import 'package:portfolio/features/widgets/mobile_view/experience_app.dart';
 import 'package:portfolio/features/widgets/mobile_view/projects_app.dart';
@@ -22,7 +23,9 @@ class MoblieViewApp extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (selectedTxt == "Skills")
+          if (selectedTxt.isEmpty || selectedTxt == "About")
+            AboutApp()
+          else if (selectedTxt == "Skills")
             SkillsApp()
           else if (selectedTxt == "Experience")
             ExperienceApp()

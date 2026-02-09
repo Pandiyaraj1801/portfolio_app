@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/constant/education_projects/educations.dart';
+import 'package:portfolio/core/constant/education_projects/userinfo.dart';
 import 'package:portfolio/core/utils/app_responsive/app_responsive.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
 import 'package:portfolio/core/widgets/header_txt.dart';
@@ -26,7 +26,7 @@ class EducationApp extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: PersonalDetails.educations
+          children: InstituteDetails.educations
               .map(
                 (edu) => Padding(
                   padding: EdgeInsets.symmetric(

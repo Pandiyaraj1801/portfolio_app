@@ -1,3 +1,15 @@
+class ProjectCard {
+  final String title;
+  final String content;
+  final List<String> tech;
+
+  const ProjectCard({
+    required this.title,
+    required this.content,
+    required this.tech,
+  });
+}
+
 class ProjectDetails {
   static List<ProjectCard> projectCards = [
     ProjectCard(
@@ -37,16 +49,4 @@ key issuance, including email notifications for both request and approval stages
       tech: ["Golang", "VueJs"],
     ),
   ];
-}
-
-class ProjectCard {
-  final String title;
-  final String content;
-  final List<String> tech;
-
-  const ProjectCard({
-    required this.title,
-    required this.content,
-    required this.tech,
-  });
 }

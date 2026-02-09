@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/constant/education_projects/educations.dart';
+import 'package:portfolio/core/constant/education_projects/userinfo.dart';
 import 'package:portfolio/core/utils/app_responsive/app_responsive.dart';
 import 'package:portfolio/core/utils/themes/app_color.dart';
 
@@ -15,7 +15,7 @@ class EducationBox extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: PersonalDetails.educations.map((edu) {
+      children: InstituteDetails.educations.map((edu) {
         return Container(
           height: AppResponsive.space(180),
           width: AppResponsive.space(170),

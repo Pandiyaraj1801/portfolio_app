@@ -2,7 +2,7 @@
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/constant/education_projects/educations.dart';
+import 'package:portfolio/core/constant/education_projects/userinfo.dart';
 import 'package:portfolio/core/constant/images/app_images.dart';
 import 'package:portfolio/core/constant/images/images.dart';
 import 'package:portfolio/core/utils/app_responsive/app_responsive.dart';
@@ -161,7 +161,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              PersonalDetails.username,
+                              "${PersonalDetails.username} J",
                               style: theme.textTheme.bodySmall?.copyWith(
                                 fontSize: AppResponsive.font(17),
                                 fontWeight: FontWeight.bold,
@@ -390,7 +390,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   isRepeatingAnimation: false,
                   animatedTexts: [
                     ScrambleAnimatedText(
-                      "J Pandiyaraj",
+                      "J ${PersonalDetails.username}",
                       textStyle: theme.textTheme.bodyLarge?.copyWith(
                         fontSize: AppResponsive.font(35),
                         letterSpacing: 1.5,

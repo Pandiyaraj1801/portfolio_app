@@ -4,7 +4,7 @@ import 'package:portfolio/core/constant/url_configs/urls.dart';
 class AppImage {
   static final String developerLogo = ImagePath.developerLogoImg;
 
-  static final String dashboardImg = ImagePath.dashboardDevImg3;
+  static final String dashboardImg = ImagePath.dashboardDevImg;
 
   static final String flattradeImg = ImagePath.flattrade;
 
@@ -88,6 +88,12 @@ class AppImage {
       'subtitle': 'Material Design UI framework for Vue.js',
       'image': ImagePath.vuetifyImg,
       'url': AppUrls.vuetifyDocsUrl,
+    },
+    {
+      'title': 'Git',
+      'subtitle': 'Distributed version control system',
+      'image': ImagePath.gitImg,
+      'url': AppUrls.gitDocsUrl,
     },
   ];
 }

@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 
-class PersonalDetails {
-  static const username = "Pandiyaraj J";
-  static const emailAccount = "pandiyaraj1801@gmail.com";
+class DashboardItem {
+  final String? title;
+  final IconData? icon;
+  final GlobalKey key;
 
+  DashboardItem({required this.title, required this.icon, required this.key});
+}
+
+class PersonalDetails {
+  static const username = "Pandiyaraj";
+  static const emailAccount = "pandiyaraj1801@gmail.com";
+  static const mobileNo = "+91 6385220204";
+  static const location = "Madurai";
+  static const pinno = "625011";
+}
+
+class InstituteDetails {
   static const List<Map<String, dynamic>> educations = [
     {
       "icon": Icons.code,
@@ -32,12 +45,4 @@ class PersonalDetails {
           "Completed Higher Secondary Education with specialization in Accountancy and Business Mathematics, covering financial accounting principles, business calculations, and analytical problem-solving.",
     },
   ];
-}
-
-class DashboardItem {
-  final String? title;
-  final IconData? icon;
-  final GlobalKey key;
-
-  DashboardItem({required this.title, required this.icon, required this.key});
 }

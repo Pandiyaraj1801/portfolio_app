@@ -1,10 +1,7 @@
 class ImagePath {
   static const String developerLogoImg = "assets/images/developer_logo.png";
-  static const String dashboardDevImg =
-      "assets/images/Programmer-Illustration.jpg";
-  static const String dashboardDevImg2 =
-      "assets/images/Programmer-Illustration-2preview.png";
-  static const String dashboardDevImg3 = "assets/images/demo.png";
+  static const String dashboardDevImg = "assets/images/dashboard_img.png";
+
   static const String htmlImg = "assets/images/html.png";
   static const String cssImg = "assets/images/css.png";
   static const String javascriptImg = "assets/images/javascript.webp";
@@ -18,8 +15,10 @@ class ImagePath {
   static const String mariadbImg = "assets/images/mariadb.png";
   static const String dbeaverImg = "assets/images/dbeaver.png";
   static const String vuetifyImg = "assets/images/vuetify.png";
+  static const String gitImg = "assets/images/git.png";
   static const String flattrade = "assets/images/flattrade.png";
   static const String flattradeBanner = "assets/images/flattrade_banner.png";
   static const String profliepicImg = "assets/images/profliepic.jpg";
   static const String projectsImg = "assets/images/projects_img.png";
+  static const String profileDpImg = "assets/images/profile_dp.jpeg";
 }
