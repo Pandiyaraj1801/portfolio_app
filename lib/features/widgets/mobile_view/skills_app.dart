@@ -22,66 +22,62 @@ class SkillsApp extends StatelessWidget {
 
         TxtHeader(txt: "Skills", fontSize: 23),
 
-        SizedBox(
-          height: 500,
-          child: GridView.builder(
-            padding: const EdgeInsets.all(14),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1,
-            ),
-            itemCount: skills.length,
-            itemBuilder: (context, index) {
-              final item = skills[index];
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(14),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 1,
+          ),
+          itemCount: skills.length,
+          itemBuilder: (context, index) {
+            final item = skills[index];
 
-              return Card(
-                elevation: 6,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: AppResponsive.space(100),
-                      child: Image.asset(item["image"], fit: BoxFit.cover),
-                    ),
-                    // const SizedBox(height: 5),
-                    Text(
-                      item["title"],
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    // const SizedBox(height: 5),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        margin: EdgeInsets.only(right: AppResponsive.space(7)),
-                        padding: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.greyColor,
-                            width: 1,
-                          ),
-                        ),
-                        child: InkWell(
-                          onTap: () => AppMethods.openUrl(item["url"]),
-                          child: Icon(
-                            Icons.navigate_next,
-                            size: AppResponsive.space(15),
-                            color: AppColors.greyColor,
-                          ),
+            return Card(
+              elevation: 6,
+              shadowColor: Colors.black.withOpacity(0.25),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: AppResponsive.space(100),
+                    child: Image.asset(item["image"], fit: BoxFit.contain),
+                  ),
+
+                  Text(
+                    item["title"],
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      margin: EdgeInsets.only(right: AppResponsive.space(7)),
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.greyColor),
+                      ),
+                      child: InkWell(
+                        onTap: () => AppMethods.openUrl(item["url"]),
+                        child: Icon(
+                          Icons.navigate_next,
+                          size: AppResponsive.space(15),
+                          color: AppColors.greyColor,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ],
     );

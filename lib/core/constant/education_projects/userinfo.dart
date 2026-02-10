@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DashboardItem {
-  final String? title;
-  final IconData? icon;
+  final String title;
+  final IconData icon;
   final GlobalKey key;
 
   DashboardItem({required this.title, required this.icon, required this.key});

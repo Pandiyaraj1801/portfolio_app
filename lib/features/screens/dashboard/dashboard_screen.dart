@@ -34,7 +34,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     DashboardItem(title: "Experience", icon: Icons.work, key: GlobalKey()),
     DashboardItem(title: "Education", icon: Icons.school, key: GlobalKey()),
     DashboardItem(title: "Projects", icon: Icons.cloud, key: GlobalKey()),
-    DashboardItem(title: null, icon: null, key: GlobalKey()),
   ];
 
   @override
@@ -110,11 +109,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ),
                     onPressed: () {
                       scrollToSection(e.key);
-                      selectedTxt = e.title ?? "";
+                      selectedTxt = e.title;
                       setState(() {});
                     },
                     child: Text(
-                      e.title ?? "",
+                      e.title,
                       style: theme.textTheme.displayMedium?.copyWith(
                         letterSpacing: 2,
                         fontSize: AppResponsive.font(10),
@@ -207,19 +206,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       minLeadingWidth: 0,
                       minTileHeight: 0,
                       horizontalTitleGap: AppResponsive.space(10),
-                      leading: Icon(e.icon, size: AppResponsive.font(15)),
+                      leading: Icon(e.icon, size: AppResponsive.font(17)),
                       onTap: () {
-                        selectedTxt = e.title ?? "";
+                        selectedTxt = e.title;
                         setState(() {});
                         scrollToSection(e.key);
                         Navigator.of(context).maybePop();
                       },
                       title: Text(
-                        e.title ?? "",
+                        e.title,
                         style: theme.textTheme.displayMedium?.copyWith(
                           color: AppColors.greyColor,
                           letterSpacing: 1,
-                          fontSize: AppResponsive.font(12),
+                          fontSize: AppResponsive.font(14),
                         ),
                       ),
                     );
