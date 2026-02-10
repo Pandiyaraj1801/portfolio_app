@@ -65530,65 +65530,64 @@ l(){this.r.l()
 this.aG()},
 C6(a){if(this.c==null)return
 $.a8.k4$.push(new A.a5z(this,a))},
-O(a9){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1=this,a2=null,a3=A.a1(a9),a4=70*$.C.p(),a5=$.C.p(),a6=a3.p3.gbt(),a7=A.hy("assets/images/developer_logo.png",B.b3,a2,a2),a8=A.av(B.c.ah(76.5),B.H.A()>>>16&255,B.H.A()>>>8&255,B.H.A()&255)
-if($.cQ.p()>700){s=a1.w
+O(a8){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0=this,a1=null,a2=A.a1(a8),a3=70*$.C.p(),a4=$.C.p(),a5=a2.p3.gbt(),a6=A.hy("assets/images/developer_logo.png",B.b3,a1,a1),a7=A.av(B.c.ah(76.5),B.H.A()>>>16&255,B.H.A()>>>8&255,B.H.A()&255)
+if($.cQ.p()>700){s=a0.w
 r=A.Z(s).h("a2<1,bC>")
-s=A.X(new A.a2(s,new A.a5u(a1,a3),r),r.h("at.E"))}else s=a2
+s=A.X(new A.a2(s,new A.a5u(a0,a2),r),r.h("at.E"))}else s=a1
 if($.cQ.p()<700){r=$.cQ.p()
 q=$.cQ.p()*0.05
 p=$.cQ.p()*0.015
-o=a3.ok
+o=a2.ok
 n=o.Q
-n=A.b9("Pandiyaraj J",a2,a2,n==null?a2:n.yQ(17*$.C.p(),B.a9),a2)
+n=A.b9("Pandiyaraj J",a1,a1,n==null?a1:n.yQ(17*$.C.p(),B.a9),a1)
 o=o.b
 m=t.D
-m=A.c([A.j0(B.jb,A.c([A.cS(a2,A.bW(A.c([new A.Bg(B.e4,new A.nL("assets/images/profliepic.jpg",a2,a2),40,a2),B.Iy,n,B.vK,A.b9("pandiyaraj1801@gmail.com",a2,a2,o==null?a2:o.oP(B.H,12*$.C.p(),1),a2)],m),B.v,a2,B.z,B.t),B.r,a2,new A.bO(B.za,a2,B.wT,a2,a2,a2,B.Y),a2,a2,a2,new A.ap(p,q,p,q),a2,a2,1/0),A.iN(-10,A.cS(a2,A.e0(B.AF,B.i,a2,14*$.C.p()),B.r,a2,new A.bO(B.qa,a2,a2,a2,a2,a2,B.bD),a2,a2,a2,B.ku,a2,a2,a2),a2,a2,a2,a2,a2,a2)],m),B.r,B.bh),A.ar(a2,10*$.C.p(),a2)],m)
-q=a1.w
-B.b.N(m,new A.a2(q,new A.a5v(a1,a9,a3),A.Z(q).h("a2<1,h>")))
-m=new A.Cf(r*0.6,A.ah_(m,a2,B.b2),a2)
-r=m}else r=a2
-q=a1.r
-if($.cQ.p()<700)q=new A.DL(q,a1.f,a2)
-else{p=a1.w
+m=A.c([A.j0(B.jb,A.c([A.cS(a1,A.bW(A.c([new A.Bg(B.e4,new A.nL("assets/images/profliepic.jpg",a1,a1),40,a1),B.Iy,n,B.vK,A.b9("pandiyaraj1801@gmail.com",a1,a1,o==null?a1:o.oP(B.H,12*$.C.p(),1),a1)],m),B.v,a1,B.z,B.t),B.r,a1,new A.bO(B.za,a1,B.wT,a1,a1,a1,B.Y),a1,a1,a1,new A.ap(p,q,p,q),a1,a1,1/0),A.iN(-10,A.cS(a1,A.e0(B.AF,B.i,a1,14*$.C.p()),B.r,a1,new A.bO(B.qa,a1,a1,a1,a1,a1,B.bD),a1,a1,a1,B.ku,a1,a1,a1),a1,a1,a1,a1,a1,a1)],m),B.r,B.bh),A.ar(a1,10*$.C.p(),a1)],m)
+q=a0.w
+B.b.N(m,new A.a2(q,new A.a5v(a0,a8,a2),A.Z(q).h("a2<1,h>")))
+m=new A.Cf(r*0.6,A.ah_(m,a1,B.b2),a1)
+r=m}else r=a1
+q=a0.r
+if($.cQ.p()<700)q=new A.DL(q,a0.f,a1)
+else{p=a0.w
 o=p[0]
-n=a1.Tb(a3)
-m=a1.c
+n=a0.Tb(a2)
+m=a0.c
 m.toString
 m=A.a1(m)
 l=A.ci(0,0,1)
-k=a1.d?new A.o(0,0):new A.o(-1,0)
+k=a0.d?new A.o(0,0):new A.o(-1,0)
 j=40*$.C.p()
-i=a3.ok.b
+i=a2.ok.b
 h=i==null
-g=A.b9("Introduction",a2,a2,h?a2:i.oO(9*$.C.p(),1.5),a2)
-f=A.ar(a2,$.li.p()*0.01,a2)
-e=A.b9("Overview.",a2,a2,h?a2:i.kI(B.H,20*$.C.p()),a2)
-d=A.ar(a2,$.li.p()*0.02,a2)
+g=A.b9("Introduction",a1,a1,h?a1:i.oO(9*$.C.p(),1.5),a1)
+f=A.ar(a1,$.li.p()*0.01,a1)
+e=A.b9("Overview.",a1,a1,h?a1:i.kI(B.H,20*$.C.p()),a1)
+d=A.ar(a1,$.li.p()*0.02,a1)
 c=$.cQ.p()
-if(h)m=a2
+if(h)m=a1
 else{b=$.C.p()
 m=m.ax.a===B.V?B.H:B.j
 b=i.a3h(m,8*b,1.5,1)
 m=b}b=t.D
-o=A.bW(A.c([n,A.AP(new A.bC(new A.ap(j,0,j,0),A.bW(A.c([g,f,e,d,A.ar(A.b9(" Flutter Developer with 2.4 years of experience building high-performance, real-time mobile applications. Strong expertise in REST API and WebSocket integration for seamless data communication. Proficient in state management using Provider and BLoC for scalable and maintainable apps. Hands-on experience developing trading, visitor tracking, and approval workflow applications. Skilled in backend integration using Go and MariaDB to deliver end-to-end solutions. Passionate about writing clean code, optimizing performance, and delivering reliable user experiences. ",a2,a2,m,a2),a2,c*0.5)],b),B.v,a2,B.z,B.t),a2),B.cY,l,k)],b),B.v,o.c,B.z,B.t)
-k=A.ar(a2,60*$.C.p(),a2)
+o=A.bW(A.c([n,A.AP(new A.bC(new A.ap(j,0,j,0),A.bW(A.c([g,f,e,d,A.ar(A.b9(" Flutter Developer with 2.4 years of experience building high-performance, real-time mobile applications. Strong expertise in REST API and WebSocket integration for seamless data communication. Proficient in state management using Provider and BLoC for scalable and maintainable apps. Hands-on experience developing trading, visitor tracking, and approval workflow applications. Skilled in backend integration using Go and MariaDB to deliver end-to-end solutions. Passionate about writing clean code, optimizing performance, and delivering reliable user experiences. ",a1,a1,m,a1),a1,c*0.5)],b),B.v,a1,B.z,B.t),a1),B.cY,l,k)],b),B.v,o.c,B.z,B.t)
+k=A.ar(a1,60*$.C.p(),a1)
 l=p[1]
-l=A.bW(A.c([new A.h4("Skills",17,a2),A.ar(a2,10*$.C.p(),a2),new A.u4(a2)],b),B.v,l.c,B.z,B.t)
+l=A.bW(A.c([new A.h4("Skills",17,a1),A.ar(a1,10*$.C.p(),a1),new A.u4(a1)],b),B.v,l.c,B.z,B.t)
 c=p[2]
-c=A.bW(A.c([new A.h4("Work Experience",17,a2),A.ar(a2,20*$.C.p(),a2),new A.xe(a2)],b),B.v,c.c,B.z,B.t)
-m=A.ar(a2,30*$.C.p(),a2)
+c=A.bW(A.c([new A.h4("Work Experience",17,a1),A.ar(a1,20*$.C.p(),a1),new A.xe(a1)],b),B.v,c.c,B.z,B.t)
+m=A.ar(a1,30*$.C.p(),a1)
 d=p[3]
-d=A.bW(A.c([new A.h4("Educations",17,a2),A.ar(a2,20*$.C.p(),a2),new A.Cj(a2)],b),B.v,d.c,B.z,B.t)
-e=A.ar(a2,30*$.C.p(),a2)
-f=p[4]
-f=A.bW(A.c([new A.h4("Projects",17,a2),A.ar(a2,20*$.C.p(),a2),A.ik(new A.vk(a2),a2,a2)],b),B.v,f.c,B.z,B.t)
-g=A.ar(a2,50*$.C.p(),a2)
-j=50*$.C.p()
-p=p[5]
-n=A.ag0()
-a=A.ar(a2,10*$.C.p(),a2)
-a0=A.ar(a2,15*$.C.p(),a2)
-q=A.ai7(A.bW(A.c([o,k,l,c,m,d,e,f,g,new A.bC(new A.ap(j,0,j,0),A.bW(A.c([n,a,new A.D9(a2),a0,A.ik(A.b9(u.F,a2,a2,h?a2:i.oP(B.H,6*$.C.p(),1),a2),a2,a2),A.ar(a2,10*$.C.p(),a2),A.ag0()],b),B.v,p.c,B.z,B.t),a2),A.ar(a2,50*$.C.p(),a2)],b),B.v,a2,B.z,B.t),q)}return new A.vN(new A.rj(a7,s,a6,new A.ch(B.n,B.n,new A.bN(a8,1,B.N,-1),B.n),new A.KP(a4,a2,1/0,a4+0),a4,100*a5,a2),q,r,a2)},
+d=A.bW(A.c([new A.h4("Educations",17,a1),A.ar(a1,20*$.C.p(),a1),new A.Cj(a1)],b),B.v,d.c,B.z,B.t)
+e=A.ar(a1,30*$.C.p(),a1)
+p=p[4]
+p=A.bW(A.c([new A.h4("Projects",17,a1),A.ar(a1,20*$.C.p(),a1),A.ik(new A.vk(a1),a1,a1)],b),B.v,p.c,B.z,B.t)
+f=A.ar(a1,50*$.C.p(),a1)
+g=50*$.C.p()
+j=A.ag0()
+n=A.ar(a1,10*$.C.p(),a1)
+a=A.ar(a1,15*$.C.p(),a1)
+q=A.ai7(A.bW(A.c([o,k,l,c,m,d,e,p,f,new A.bC(new A.ap(g,0,g,0),A.bW(A.c([j,n,new A.D9(a1),a,A.ik(A.b9(u.F,a1,a1,h?a1:i.oP(B.H,6*$.C.p(),1),a1),a1,a1),A.ar(a1,10*$.C.p(),a1),A.ag0()],b),B.v,a1,B.z,B.t),a1),A.ar(a1,50*$.C.p(),a1)],b),B.v,a1,B.z,B.t),q)}return new A.vN(new A.rj(a6,s,a5,new A.ch(B.n,B.n,new A.bN(a7,1,B.N,-1),B.n),new A.KP(a3,a1,1/0,a3+0),a3,100*a4,a1),q,r,a1)},
 Tb(a){var s,r,q,p,o,n,m=this,l=null,k="J Pandiyaraj",j=$.li.p(),i=$.cQ.p()*0.04,h=$.li.p()*0.02,g=m.c
 g.toString
 g=A.a1(g)

@@ -325,7 +325,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       horizontal: AppResponsive.space(50),
                     ),
                     child: Column(
-                      key: dashboards[5].key,
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
